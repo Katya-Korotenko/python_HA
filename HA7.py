@@ -1,9 +1,15 @@
 
 import random
 def Aufgabe1():
-    num = int(input('Введите число:'))
-    print(f'Сумма цифр:{sum(num)}')
+    num = input('Введите число:')
+    sum = 0
+    for i in num:
+        sum += int(i)
+    print(f'Сумма цифр:{sum}')
 
+
+
+Aufgabe1()
 def Aufgabe2():
     num = input('Введите число:')
     if num == num[::-1]:
@@ -31,4 +37,3 @@ def Aufgabe3():
         if i == 10:
             print('Game Over!')
 
-Aufgabe3()
