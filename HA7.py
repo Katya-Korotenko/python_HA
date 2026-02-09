@@ -1,4 +1,3 @@
-
 import random
 def Aufgabe1():
     num = input('Введите число:')
