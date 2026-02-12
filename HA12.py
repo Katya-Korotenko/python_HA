@@ -37,7 +37,7 @@ def Aufgabe2():
         "Charlie 40 500.75"]
 
     for item in data_list:
-        text = f"""Имя: {item.split()[0].ljust(10)} Возраст: {item.split()[1].center(3)} Баланс: {item.split()[2].rjust(10)}"""
+        text = f"""Имя: {item.split()[0].ljust(10)}| Возраст: {item.split()[1].ljust(3)}| Баланс: {float(item.split()[2]):>10.2f}"""
         print(text)
 
 Aufgabe2()
