@@ -50,7 +50,9 @@ def Aufgabe3():
     text = "I have 5 apples and 10 oranges, price is 0.5 each. Card number is ....3672."
     new_text = []
     for item in text.split():
-        if item.isdigit():
+        if len(item.split('.')) == 2 and item.split('.')[0].isdigit() and item.split('.')[1].isdigit():
+            new_text.append(str(float(item)*10))
+        elif item.isdigit():
             new_text.append(str(float(item)*10))
         else:
             new_text.append(item)
