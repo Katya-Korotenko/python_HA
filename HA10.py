@@ -12,24 +12,13 @@
 # Внесите монеты номиналом 2: 1
 def Aufgabe1():
     total = int(input("Введите стоимость товара:"))
-    money_50 = total // 50
-    total = total % 50
+    money = [50, 10, 5, 2, 1]
+    for i in money:
+        n = total // i
+        if n>0:
+            print(f"Внесите монеты номиналом {i}: {n}")
+            total%= i
 
-    money_10 = total // 10
-    total = total % 10
-
-    money_5 = total // 5
-    total = total % 5
-
-    money_2 = total // 2
-    total = total % 2
-
-    money_1 = total // 1
-    print(f"Внесите монеты номиналом 50: {money_50}")
-    print(f"Внесите монеты номиналом 10: {money_10}")
-    print(f"Внесите монеты номиналом 5: {money_5}")
-    print(f"Внесите монеты номиналом 2: {money_2}")
-    print(f"Внесите монеты номиналом 1: {money_1}")
 
 
 # Квадрат нечетных чисел
@@ -41,12 +30,13 @@ def Aufgabe1():
 
 def Aufgabe2():
     numbers = [4, 9, 1, 7, 2, 5, 0, 3, 7, 1, 3]
-    new_list = numbers[:]
-
-    for i in range(1, len(numbers), 2):
-        new_list[i] = new_list[i] ** 2
-
-    print(new_list)
 
 
-Aufgabe2()
+    for i in range(len(numbers)):
+        if numbers[i] % 2:
+            numbers[i] = numbers[i] ** 2
+
+    print(numbers)
+
+
+Aufgabe1()
