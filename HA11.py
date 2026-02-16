@@ -5,15 +5,14 @@
 # Строка: My number is 123-456-789
 # Результат: My number is ***-***-***
 
+
 def Aufgabe1():
     text = "My number is 123-456-789 "
-    result = ""
+    print(f"Строка:{text}")
     for char in text:
-        if char.isdigit():
-            result += "*"
-        else:
-            result += char
-    print(f"Строка:{text}\nРезультат:{result}")
+        if char.isdigit() :
+            text = text.replace(char, '*')
+    print(f"Результат:{text}")
 
 # Количество символов
 # Напишите программу, которая подсчитывает количество вхождений всех символов в строке.
@@ -58,4 +57,4 @@ def Aufgabe3():
             new_text.append(item)
     print(" ".join(new_text))
 
-Aufgabe3()
+Aufgabe1()
