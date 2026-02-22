@@ -6,7 +6,6 @@
 # strings = ["apple23", "ban1ana45", "12cherry", "grape3", "blue23berry"]
 # Пример вывода:
 # Строки с цифрами только в конце: ['apple23', 'grape3']
-
 def Aufgabe1():
     strings = ["apple23", "ban1ana45", "12cherry", "grape3", "blue23berry"]
     new_strings = []
