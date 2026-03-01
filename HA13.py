@@ -5,9 +5,6 @@
 # numbers = (3, 7, 2, 8, 5, 10, 1)
 # Пример вывода:
 # Кортеж по возрастанию: (3, 7, 8, 10)
-from operator import index
-from os.path import sep
-from traceback import print_exc
 
 
 def Aufgabe1():
@@ -36,12 +33,15 @@ def Aufgabe2():
     numbers = (1, 2, 3, 4, 2, 5, 3, 6, 4, 2, 9)
     printed = ()
     for index, value in enumerate(numbers):
-        if numbers.count(value) > 1 and value not in printed:
-            tuple_index = ()
+        if numbers.count(value) > 1:
+            index_list = []  # сначала список
             for i, v in enumerate(numbers):
                 if v == value:
-                    tuple_index += (i,)
-            print(f"Индексы элемента {value}:", *tuple_index )
+                    index_list.append(i)
+
+            tuple_index = tuple(index_list)  # преобразуем один раз
+            print(f"Индексы элемента {value}:", *tuple_index)
+
             printed += (value,)
 
 
