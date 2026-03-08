@@ -9,14 +9,17 @@
 
 def Aufgabe1():
     numbers = (3, 7, 2, 8, 5, 10, 1)
-    res = ()
+    res_list = []
     max_value = numbers[0]
-    res += (max_value,)
-    for index, value in enumerate(numbers[1:]):
+    res_list.append(max_value)
+    for value in numbers[1:]:
         if value > max_value:
-            res += (value,)
+            res_list.append(value)
             max_value = value
+    res = tuple(res_list)
     print(res)
+
+
 #Aufgabe1()
 
 # Повторяющиеся элементы
