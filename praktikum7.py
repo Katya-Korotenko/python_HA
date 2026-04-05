@@ -11,12 +11,13 @@
 
 def Aufgabe1():
     products = ["Bread", "Butter", "Cheese", "Milk", "Eggs"]
-    for index, elem in enumerate(products, 1):
-        if elem == "Milk":
-            print("Товар 'Milk' в списке покупок: ", index)
-            break
-    else:
-        print("Товара нет")
+    for index, value in enumerate(products,1):
+        if value == "Milk":
+            print(f'Товар {value} в списке покупок: {index}')
+        else:
+            print("Товара нет")
+
+#Aufgabe1()
 
 # Задание 2
 # Список
