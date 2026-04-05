@@ -6,21 +6,21 @@
 # Пример вывода:
 # Число 17 является простым
 
-
-
-def aufgabe1():
-    numb = int(input("Input number: "))
-    if numb < 2 :
-        print(f"Число {numb} не является простым")
-        return
+numb = int(input("Input number: "))
+def aufgabe1(numb):
+    if numb < 2:
+        return False
 
     for i in range(2, numb):
         if numb % i == 0:
-            print(f"Число {numb} не является простым")
-            break
-    else:
-        print(f"Число {numb} является простым")
+            return False
 
+    return True
+
+if aufgabe1(numb):
+    print(f"Число {numb} является простым")
+else:
+    print(f"Число {numb} не является простым")
 
 
 # Фильтрация чисел по чётности
@@ -45,12 +45,15 @@ def filter_numbers(filter_type, *args):
         result = [i for i in args if i % 2 != 0]
 
     else:
-        print("Некорректный фильтр")
-        return
+        return None
 
     return result
 
-
+result = filter_numbers("even", 1, 2, 3, 4)
+if result is None:
+    print("Некорректный фильтр")
+else:
+    print(result)
 # Объединение словарей
 # Напишите функцию, которая принимает любое количество словарей и объединяет их в один.
 # Если ключи повторяются, используется значение из последнего словаря.
@@ -65,7 +68,6 @@ def filter_numbers(filter_type, *args):
 
 def merge_dicts(*dicts):
     result = {}
-
     for d in dicts:
         for key, value in d.items():
             result[key] = value
