@@ -6,6 +6,8 @@
 # Пример вывода:
 # Число 17 является простым
 
+
+
 def aufgabe1():
     numb = int(input("Input number: "))
     if numb < 2 :
@@ -20,7 +22,7 @@ def aufgabe1():
         print(f"Число {numb} является простым")
 
 
-aufgabe1()
+
 # Фильтрация чисел по чётности
 # Напишите функцию, которая принимает filter_type ("even" или "odd") и произвольное количество чисел,
 # возвращая только те, которые соответствуют фильтру.
@@ -33,8 +35,20 @@ aufgabe1()
 # [15, 25]
 # Некорректный фильтр
 
-def aufgabe2():
-    pass
+
+def filter_numbers(filter_type, *args):
+
+    if filter_type == "even":
+         result = [i for i in args if i % 2 == 0]
+
+    elif filter_type == "odd":
+        result = [i for i in args if i % 2 != 0]
+
+    else:
+        print("Некорректный фильтр")
+        return
+
+    return result
 
 
 # Объединение словарей
@@ -49,5 +63,13 @@ def aufgabe2():
 # Пример вывода:
 # {'a': 1, 'b': 3, 'c': 4, 'd': 5}
 
-def aufgabe3():
-    pass
+def merge_dicts(*dicts):
+    result = {}
+
+    for d in dicts:
+        for key, value in d.items():
+            result[key] = value
+    return result
+
+
+
