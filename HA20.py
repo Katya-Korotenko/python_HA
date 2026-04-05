@@ -8,10 +8,16 @@
 
 def aufgabe1():
     numb = int(input("Input number: "))
-    if numb % 1 and numb % numb == 0:
-        print(f"Число {numb} является простым")
-    else:
+    if numb < 2 :
         print(f"Число {numb} не является простым")
+        return
+
+    for i in range(2, numb):
+        if numb % i == 0:
+            print(f"Число {numb} не является простым")
+            break
+    else:
+        print(f"Число {numb} является простым")
 
 
 aufgabe1()
