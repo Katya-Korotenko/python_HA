@@ -20,10 +20,8 @@ def join_data(data: list[Any]) -> str:
       :return: Строка, содержащая все элементы списка, объединённые через ' | '.
       """
 
-    result = []
-    for item in data:
-        result.append(str(item))
-    return " | " .join(result)
+    return " | ".join(str(item) for item in data)
+
 
 # print(join_data(data))
 
