@@ -1,3 +1,7 @@
+
+from collections import Counter
+from collections import defaultdict
+
 # Повторения букв
 # Реализуйте функцию, которая принимает текст и возвращает словарь
 # с подсчётом количества каждой буквы, игнорируя регистр.
@@ -9,20 +13,26 @@
 # {'p': 1, 'r': 2, 'o': 1, 'g': 2, 'a': 1, 'm': 2, 'i': 2, 'n': 2, 's': 1, 'f': 1, 'u': 1}
 
 
-def count_letters():
-    text = "Programming is fun!"
-    result = {}
-    text = text.lower()
+text = "Programming is fun!"
 
-    for char in text:
-        if char.isalpha():
-            if char not in result:
-                result[char] = 1
-            else:
-                result[char] += 1
+def count_letters(text):
+    #вариант без сохранения порядка
+
+    # result = Counter(char for char in text.lower() if char.isalpha())
+    # return result
+
+    #второй варинат с сохранением порядка
+    counts = Counter(char for char in text.lower() if char.isalpha())
+
+    result = {}
+    for char in text.lower():
+        if char.isalpha() and char not in result:
+            result[char] = counts[char]
     return result
 
 
+
+print(count_letters(text))
 # Группировка студентов по классам
 # Создайте структуру для группировки студентов по классам.
 # Добавьте студентов в соответствующие группы.
@@ -31,17 +41,16 @@ def count_letters():
 # Пример вывода:
 # {'class1': ['Alice', 'Charlie'], 'class2': ['Bob'], 'class3': ['Daisy']}
 
-def clas_students():
-    students = [("class1", "Alice"), ("class2", "Bob"), ("class1", "Charlie"), ("class3", "Daisy")]
-    result = {}
+
+students = [("class1", "Alice"), ("class2", "Bob"), ("class1", "Charlie"), ("class3", "Daisy")]
+
+def clas_students(stedents):
+
+    result = defaultdict(list)
     for class_num, student_name in students:
-        if class_num not in result:
-            result[class_num] = [student_name]
-        else:
-            result[class_num].append(student_name)
+        result[class_num] = [student_name]
+
+    return dict(result)
 
 
-    return result
-
-
-print(clas_students())
+print(clas_students(students))
