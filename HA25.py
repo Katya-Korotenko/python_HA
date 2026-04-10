@@ -8,28 +8,26 @@ import logging
 # Введите делитель: 5a
 # Ошибка: Введено некорректное число.
 
-def division():
+
+def division(num1: float, num2: float) -> float:
     """
-    Выполняет деление двух чисел, введённых пользователем.
-    Обрабатывает ошибки ввода и деления на ноль.
-    """
-
-
-
+        Выполняет деление двух чисел, введённых пользователем.
+        Обрабатывает ошибки ввода и деления на ноль.
+        """
     try:
-        num1 = float(input("Введите делимое:"))
-        num2 = float(input("Введите делитель:"))
-
-        result = num1/num2
-        print(f"Результат: {result}")
-
+        num1 = float(num1)
+        num2 = float(num2)
+        return num1 / num2
     except ValueError:
-        print("Ошибка: Введено некорректное число.")
+        return "Ошибка: Введено некорректное число."
     except ZeroDivisionError:
-        print("Ошибка: Деление на ноль невозможно.")
+        return "Ошибка: Деление на ноль невозможно."
 
 
-# division()
+num1 = input("Введите делимое: ")
+num2 = input("Введите делитель: ")
+
+# print(division(num1, num2))
 
 
 # Логирование ошибок
@@ -38,7 +36,7 @@ def division():
 # 2025-02-23 22:38:53,686 - ERROR - test.py - 16 - Ошибка: Введено некорректное число.
 
 
-def division2():
+def division2(num1: float, num2: float) -> float | str:
     """
     Выполняет деление двух чисел, введённых пользователем.
     Обрабатывает ошибки ввода и деления на ноль.
@@ -50,17 +48,19 @@ def division2():
         format="%(asctime)s - %(filename)s - %(levelname)s - %(lineno)d - %(message)s ",
         level=logging.ERROR)
 
-
     try:
-        num1 = float(input("Введите делимое:"))
-        num2 = float(input("Введите делитель:"))
+        num1 = float(num1)
+        num2 = float(num2)
+        return num1 / num2
 
-        result = num1/num2
-        print(f"Результат: {result}")
+    except ValueError:
+        msg = "Ошибка: Введено некорректное число."
+        logging.error(msg)
+        return msg
+    except ZeroDivisionError:
+        msg = "Ошибка: Деление на ноль невозможно."
+        logging.error(msg)
+        return msg
 
-    except (ValueError, ZeroDivisionError ):
 
-        logging.error(f"Ошибка: Введено некорректное число.")
-
-
-division2()
+print(division2(num1, num2))
