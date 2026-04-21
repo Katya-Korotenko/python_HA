@@ -30,6 +30,7 @@ def find_lines(filename: str) -> list[str]:
     return matches
 
 
+
 filename = input("Введите имя файла для поиска: ")
 
 
