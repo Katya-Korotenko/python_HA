@@ -27,7 +27,36 @@ def measure_time(func: Callable[[], int]) -> Callable[[], int]:
         return res
     return wrapper
 
-@measure_time
+
+# Среднее время выполнения с количеством вызовов
+# Доработайте декоратор measure_time, чтобы он принимал параметр repeats — количество вызовов функции.
+# Декоратор должен выполнять функцию указанное число раз и выводить среднее время выполнения.
+
+
+def measure_time2(repeats: int) -> Callable[[Callable[[], int]], Callable[[], int]]:     #принимает параметр
+    """
+    Декоратор который измеряет и выводит среднее время выполнения функции за указанное количество вызовов.
+
+    :param repeats: количество повторений
+    :return: обёрнутая функция которая измеряет среднее время выполнения
+    """
+    def decorator(func: Callable[[], int]) :             #принимает функцию
+        def wrapper() -> int:
+            total_time = 0
+            for _ in range(repeats):
+                start = time.perf_counter()
+                res = func()
+                end = time.perf_counter()
+                elapsed = end - start
+                total_time += elapsed
+
+            average = total_time / repeats
+            print(f"Среднее время выполнения для {repeats}  вызовов: {average:.6f} сек.")
+            return res
+        return wrapper
+    return decorator
+
+@measure_time2(5)
 def computer() -> int:
     """
     Считает сумму чисел от 0 до 10 000 000.
