@@ -24,19 +24,18 @@ class AudioFileMixin:
         """
         Воспроизводит аудиотреки, указанные в атрибуте audio_tracks.
 
-         :raise:
-            AttributeError: если у объекта отсутствует атрибут audio_tracks.
+         :raise AttributeError: если у объекта отсутствует атрибут audio_tracks.
         """
         if not hasattr(self, "audio_tracks"):
             raise AttributeError("Отсутствует нужный трек")
 
-        print(f"Воспроизведение аудио для {self.__class__.__name__}:")
-        for track in self.audio_tracks:
-            print(track)
+        result = f"Воспроизведение аудио для {self.__class__.__name__}:\n"
+        result += "\n".join(self.audio_tracks)
+        return result
 
 
 
-class VideoFileMixin :
+class VideoFileMixin:
     """
      Миксин, добавляющий возможность воспроизведения видеофайлов.
     """
@@ -45,16 +44,14 @@ class VideoFileMixin :
         """
         Воспроизводит видеоролики, указанные в атрибуте video_files.
 
-        Raises:
-        :raise:
-            AttributeError: если у объекта отсутствует атрибут video_files.
+        :raise AttributeError: если у объекта отсутствует атрибут video_files
         """
         if not hasattr(self, "video_files"):
             raise AttributeError("Отсутствует нужное видео")
 
-        print(f"Воспроизведение видео для {self.__class__.__name__}:")
-        for video in self.video_files:
-            print(video)
+        result = f"Воспроизведение видео для {self.__class__.__name__}:\n"
+        result += "\n".join(self.video_files)
+        return result
 
 # Устройства
 # Создайте два класса:
@@ -81,7 +78,7 @@ class Laptop(AudioFileMixin, VideoFileMixin):
         """
         Инициализирует ноутбук.
         :param audio_tracks: список аудиофайлов.
-        :param video_files: список аудиофайлов.
+        :param video_files: список видеофайлов.
         """
         self.audio_tracks = audio_tracks
         self.video_files = video_files
@@ -90,14 +87,12 @@ class Laptop(AudioFileMixin, VideoFileMixin):
 # mediap.play_audio()
 
 
+
 try:
-    laptop = Laptop(tracks,movies)
-    laptop.play_audio()
-    laptop.play_video()
+    laptop = Laptop(tracks, movies)
+    print(laptop.play_audio())
+    print(laptop.play_video())
 except AttributeError as e:
     print(e)
-
-
-
 
 
