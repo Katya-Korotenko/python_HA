@@ -27,6 +27,7 @@ class BankAccount:
 
     def get_balance(self) -> str:
         """
+        Возвращает текущий баланс счёта.
         :return: текущий баланс
         """
         return f"Current balance: {self.__balance}"
@@ -53,14 +54,13 @@ class BankAccount:
             self.__balance -= amount
             self.__history.append(f"Withdraw: {amount}")
             return self.get_balance()
-        else:
-            raise ValueError("Error: Not enough funds.")
+        raise ValueError("Error: Not enough funds.")
 
     @property
     def history(self) -> str:
         """
-
-        :return: список операций
+        История всех операций только для чтения.
+        :return: строка с историей операций
         """
         return f"Operation history:\n\t{"\n\t".join(self.__history)}"
 
