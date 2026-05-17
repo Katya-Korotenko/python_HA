@@ -94,5 +94,3 @@ try:
     print(laptop.play_video())
 except AttributeError as e:
     print(e)
-
-
