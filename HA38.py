@@ -25,14 +25,14 @@ class BankAccount:
         self.__balance = balance
         self.__history = []
 
-    def get_balance(self) -> str:
+    def get_balance(self) -> float:
         """
         Возвращает текущий баланс счёта.
         :return: текущий баланс
         """
-        return f"Current balance: {self.__balance}"
+        return self.__balance
 
-    def deposit(self, amount: float) -> str:
+    def deposit(self, amount: float) -> float:
         """
         пополнения счета
         :param amount: на какую сумму пополнить
@@ -43,7 +43,7 @@ class BankAccount:
         self.__history.append(f"Deposit: {amount}")
         return self.get_balance()
 
-    def withdraw(self, amount: float) -> str:
+    def withdraw(self, amount: float) -> float | str:
         """
         снятие со счета
         :param amount: какую сумму снять со счета
@@ -57,29 +57,27 @@ class BankAccount:
         raise ValueError("Error: Not enough funds.")
 
     @property
-    def history(self) -> str:
+    def history(self) -> list[ str ]:
         """
         История всех операций только для чтения.
         :return: строка с историей операций
         """
-        return f"Operation history:\n\t{"\n\t".join(self.__history)}"
+        return self.__history
 
     def __validate_amount(self, amount: float) -> None:
         """
         проверка переменной amount
         :raises ValueError: если сумма отрицательная или равна нулю
         """
-
         if amount <= 0:
             raise ValueError("Error: Amount must be positive.")
 
 
-
 try:
     client1 = BankAccount('Jon', 150)
-    print(client1.get_balance())
-    print(client1.deposit(50))
-    print(client1.withdraw(200))
-    print(client1.history)
+    print(f"Current balance: {client1.get_balance()}")
+    print(f"Current balance: {client1.deposit(50)}")
+    print(f"Current balance: {client1.withdraw(200)}")
+    print(f"Operation history:\n\t{"\n\t".join(client1.history)}")
 except ValueError as e:
     print(e)
