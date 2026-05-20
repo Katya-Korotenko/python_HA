@@ -88,7 +88,7 @@ def print_cities(cities: list[tuple[str, int]]) -> None :
         print(f"{index}. {city} - {population}")
 
 
-def prompt_countries(countries: list[str]) -> None | str:
+def prompt_countries(countries: list[str]) -> str:
     """
     Запрашивает у пользователя страну или её номер.
     :param countries: Список стран.
